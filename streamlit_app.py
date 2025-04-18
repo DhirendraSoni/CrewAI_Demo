@@ -46,10 +46,10 @@ with st.sidebar:
         """)
 
 def generate_content(topic):
-    llm = LLM(
-        model="gemini/gemini-2.0-flash",
-    )
 
+    llm=LLM(model="gemini/gemini-2.0-flash",
+          api_key=os.getenv("GEMINI_API_KEY"))
+    
     search_tool = SerperDevTool(n_results=1)
 
     # First Agent: Senior Research Analyst

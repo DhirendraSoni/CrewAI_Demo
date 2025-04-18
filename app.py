@@ -2,6 +2,7 @@ from crewai import Crew, Agent, Task, LLM
 from crewai_tools import SerperDevTool
 
 from dotenv import load_dotenv
+import os
 load_dotenv()
 
 topic = "AI in Healthcare"
@@ -13,9 +14,16 @@ topic = "AI in Healthcare"
 
 # A1 Researcher + Web Search (Serper API)------> A2 Content Creator(Summarization)
 # LLM Provider
-llm = LLM(
-    model="gemini/gemini-2.0-flash",
-)
+
+
+
+llm=LLM(model="gemini/gemini-2.0-flash",
+          api_key=os.getenv("GEMINI_API_KEY"))
+
+
+# llm = LLM(
+#     model="gemini/gemini-2.0-flash",
+# )
 # Tool
 search_tool = SerperDevTool(n=2)
 
